@@ -19,11 +19,19 @@ function CryptoDetail() {
     return (
         <div>
             <Link to={`/`}>
-                <h2>Back</h2>
+                <h2
+                    className={"text-blue-500 hover:text-blue-700 cursor-pointer text-xl"}
+                >Back</h2>
             </Link>
-            <h1>{crypto ? crypto.name : 'Loading...'}</h1>
-            <p>{crypto ? `$${parseFloat(crypto.priceUsd).toFixed(2)}` : 'Loading...'}</p>
-            <p>{crypto ? crypto.symbol : 'Loading...'}</p>
+            <h1
+                className={"text-2xl font-bold"}
+            >{crypto ? crypto.name : 'Loading...'}</h1>
+            <p
+                className={"text-gray-500"}
+            >{crypto ? `$${parseFloat(crypto.priceUsd).toFixed(2)}` : 'Loading...'}</p>
+            <p
+                className={"text-gray-500"}
+            >{crypto ? crypto.symbol : 'Loading...'}</p>
         </div>
     )
 }
