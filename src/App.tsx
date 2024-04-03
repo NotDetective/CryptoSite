@@ -1,11 +1,8 @@
-
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import CryptoDetail from "./components/CryptoDetail.tsx";
 import CryptoList from "./components/CryptoList.tsx";
 
 function App() {
-
-
     return (
         <Router>
             <Routes>

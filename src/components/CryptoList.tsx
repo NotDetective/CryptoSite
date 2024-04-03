@@ -18,13 +18,23 @@ function cryptoList() {
     }, []);
 
     return (
-        <div>
-            <h1>Cryptocurrency Prices</h1>
-            {
-                cryptoList.map((crypto) => (
-                    CryptoItem({crypto})
-                ))
-            }
+        <div
+            className={"p-4"}
+        >
+            <h1
+                className={"text-2xl font-bold text-center mb-4"}
+            >
+                Cryptocurrencies
+            </h1>
+            <div
+                className={"grid grid-cols-3 gap-4"}
+            >
+                {
+                    cryptoList.map((crypto) => (
+                        CryptoItem({crypto})
+                    ))
+                }
+            </div>
         </div>
     );
 }
