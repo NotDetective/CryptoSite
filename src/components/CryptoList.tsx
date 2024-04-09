@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import CryptoItem from "./CryptoItem.tsx";
+import {Link} from "react-router-dom";
 
 function CryptoList() {
     const [apiData, setApiData] = useState([]); // Assuming data is structured like { data: [...] }
@@ -39,6 +40,11 @@ function CryptoList() {
             >
                 Cryptocurrencies
             </h1>
+            <Link to={`/watchlist`}>
+                <h2
+                    className={"text-blue-500 hover:text-blue-700 cursor-pointer text-xl"}
+                >Watchlist</h2>
+            </Link>
             <input
                 className={"w-full p-2 rounded-md border border-gray-300 mb-4"}
                 type="text"
@@ -51,7 +57,7 @@ function CryptoList() {
             >
                 {
                     cryptoList.map((crypto) => (
-                        <CryptoItem crypto={crypto} />
+                        <CryptoItem crypto={crypto}/>
                     ))
                 }
             </div>
