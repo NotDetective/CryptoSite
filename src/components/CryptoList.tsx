@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
 import CryptoItem from "./CryptoItem.tsx";
 
-function cryptoList() {
+function CryptoList() {
     const [apiData, setApiData] = useState([]); // Assuming data is structured like { data: [...] }
-    const [cryptoList, setCryptoList] = useState([]);
+    const [cryptoList, setCryptoList] = useState<Crypto[]>([]);
     const [search, setSearch] = useState("");
 
     useEffect(() => {
@@ -28,9 +28,7 @@ function cryptoList() {
         });
 
         setCryptoList(filteredCryptos);
-    }, [
-        search
-    ]);
+    }, [apiData, search]);
 
     return (
         <div
@@ -53,7 +51,7 @@ function cryptoList() {
             >
                 {
                     cryptoList.map((crypto) => (
-                        CryptoItem({crypto})
+                        <CryptoItem crypto={crypto} />
                     ))
                 }
             </div>
@@ -61,4 +59,4 @@ function cryptoList() {
     );
 }
 
-export default cryptoList;
+export default CryptoList;
