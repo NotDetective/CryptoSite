@@ -28,9 +28,13 @@ function CryptoWatchlist() {
             >
                 {
                     watchlist.map((crypto) => (
-                        <h1>
-                            {crypto}
-                        </h1>
+                        <div className={"border p-4 rounded-md hover:shadow-md cursor-pointer"}>
+                            <Link to={`/crypto/${crypto}`}>
+                                <h2 className={"text-blue-500 hover:text-blue-700 cursor-pointer text-xl"}>
+                                    {crypto}
+                                </h2>
+                            </Link>
+                        </div>
                     ))
                 }
             </div>
