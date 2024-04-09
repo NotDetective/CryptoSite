@@ -1,9 +1,10 @@
 import {useEffect, useState} from "react";
 import CryptoItem from "./CryptoItem.tsx";
+import {Link} from "react-router-dom";
 
-function cryptoList() {
+function CryptoList() {
     const [apiData, setApiData] = useState([]); // Assuming data is structured like { data: [...] }
-    const [cryptoList, setCryptoList] = useState([]);
+    const [cryptoList, setCryptoList] = useState<Crypto[]>([]);
     const [search, setSearch] = useState("");
 
     useEffect(() => {
@@ -28,9 +29,7 @@ function cryptoList() {
         });
 
         setCryptoList(filteredCryptos);
-    }, [
-        search
-    ]);
+    }, [apiData, search]);
 
     return (
         <div
@@ -41,6 +40,11 @@ function cryptoList() {
             >
                 Cryptocurrencies
             </h1>
+            <Link to={`/watchlist`}>
+                <h2
+                    className={"text-blue-500 hover:text-blue-700 cursor-pointer text-xl"}
+                >Watchlist</h2>
+            </Link>
             <input
                 className={"w-full p-2 rounded-md border border-gray-300 mb-4"}
                 type="text"
@@ -53,7 +57,7 @@ function cryptoList() {
             >
                 {
                     cryptoList.map((crypto) => (
-                        CryptoItem({crypto})
+                        <CryptoItem crypto={crypto}/>
                     ))
                 }
             </div>
@@ -61,4 +65,4 @@ function cryptoList() {
     );
 }
 
-export default cryptoList;
+export default CryptoList;
