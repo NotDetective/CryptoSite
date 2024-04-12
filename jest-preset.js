@@ -1,8 +1,9 @@
 module.exports = require('@babel/preset-react');
 
+// jest.config.js
 module.exports = {
     transform: {
-        '^.+\\.jsx?$': 'babel-jest',
+        '^.+\\.tsx?$': 'ts-jest',
     },
 };
 
