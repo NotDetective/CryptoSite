@@ -7,3 +7,6 @@ module.exports = {
     },
 };
 
+module.exports = {
+    "testEnvironment": "jsdom"
+}

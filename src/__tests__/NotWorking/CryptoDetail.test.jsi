@@ -1,0 +1,25 @@
+import React from 'react';
+import CryptoDetail from '../components/CryptoDetail';
+import {render} from "@testing-library/react";
+import {MemoryRouter} from "react-router-dom";
+
+describe('CryptoDetail Component', () => {
+    test('renders crypto item correctly', () => {
+        // const crypto = {
+        //     id: 'bitcoin',
+        //     name: 'Bitcoin',
+        //     priceUsd: '60000',
+        //     symbol: 'BTC',
+        // };
+
+        const { getByText } = render(
+            <MemoryRouter>
+                <CryptoDetail id={'bitcoin'} />
+            </MemoryRouter>
+        );
+
+        expect(getByText('Bitcoin')).toBeTruthy();
+        expect(getByText('$60000.00')).toBeTruthy();
+        expect(getByText('BTC')).toBeTruthy();
+    });
+});

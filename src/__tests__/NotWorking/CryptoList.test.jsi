@@ -1,0 +1,36 @@
+import React from 'react';
+import { render, waitFor, screen } from '@testing-library/react';
+import {MemoryRouter, Route, Routes} from 'react-router-dom';
+import CryptoDetail from './CryptoDetail';
+
+describe('CryptoDetail Component', () => {
+    test('renders crypto details when data is loaded', async () => {
+        const mockCryptoData = {
+            id: 'bitcoin',
+            name: 'Bitcoin',
+            symbol: 'BTC',
+            priceUsd: '50000', // Mocking a price for testing
+        };
+
+        global.fetch = jest.fn().mockResolvedValueOnce({
+            json: async () => ({ data: mockCryptoData }),
+        });
+
+        render(
+            <MemoryRouter initialEntries={['/crypto/bitcoin']}>
+                <Routes>
+                    <Route path="/crypto/:id">
+                        <CryptoDetail />
+                    </Route>
+                </Routes>
+            </MemoryRouter>
+        );
+
+        // Wait for data to be loaded
+        await waitFor(() => {
+            expect(screen.getByText('Bitcoin')).toBeTruthy();
+            expect(screen.getByText('$50000.00')).toBeTruthy();
+            expect(screen.getByText('BTC')).toBeTruthy();
+        });
+    });
+});

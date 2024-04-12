@@ -1,8 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'; // optional but recommended
-
+// import '@testing-library/jest-dom/extend-expect'; // optional but recommended
 import CryptoWatchlist from './CryptoWatchlist';
+
+/**
+ * @jest-environment jsdom
+ */
 
 describe('CryptoWatchlist', () => {
     test('renders the watchlist correctly', () => {
